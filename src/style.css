@@ -1,5 +1,7 @@
 body {
   font-family: 'Roboto Condensed', sans-serif;
+  min-height: 90vh;
+  margin: 0;
 }
 
 header {
@@ -29,4 +31,16 @@ header li {
 
 header li:hover {
   text-decoration: underline;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid rgb(129, 129, 129);
+  width: 100%;
+}
+
+footer p {
+  font-size: 20px;
+  margin: 30px 40px;
 }
