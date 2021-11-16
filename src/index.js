@@ -1,10 +1,12 @@
 import './style.css';
 import getMovies from './api-controller.js';
 
+const commentSection = document.querySelector('.commentpop');
+const bodyfix = document.querySelector('body')
 const rederMovies = async (genresType) => {
   let movies = await getMovies();
   movies = movies.filter((item) => item.genres.indexOf(genresType) !== -1);
-  const mainSection = document.querySelector('main');
+  const mainSection = document.querySelector('.main');
   mainSection.innerHTML = '';
   for (let i = 0; i < movies.length; i += 1) {
     mainSection.innerHTML += `
@@ -22,6 +24,39 @@ const rederMovies = async (genresType) => {
         </div>
         </div>`;
   }
+
+  const commentButton = document.querySelectorAll('.comment-btn-div button');
+  const commentPopup = () => {
+    commentButton.forEach((button, index) => {
+      button.addEventListener('click', () => {
+
+        commentSection.classList.add('show');
+        bodyfix.classList.add('static');
+
+        commentSection.innerHTML = `<div class='comment-js'>
+        <div class='name-closeicon'>
+        <h2>${movies[index].name}</h2>
+        <i class="fa fa-times"></i>
+        </div>
+        <div class='comment-img'><img src='${movies[index].image.original}'></div>
+        <div class='summary'>${movies[index].summary}</div>
+        <ul>
+        <li>Genre: ${movies[index].genres.join(',')}</li>
+        <li>tvmaze: ${movies[index].url}</li>
+        <li>rating: ${movies[index].rating.average}</li>
+        </ul>
+        </div>`;
+
+     const closeComment = document.querySelector('.fa-times');
+      const closebtn = () => {
+        commentSection.classList.remove('show');
+        bodyfix.classList.remove('static');
+      };
+      closeComment.addEventListener('click', closebtn);
+      });
+    });
+  };
+  commentPopup();
 };
 
 rederMovies('Action');

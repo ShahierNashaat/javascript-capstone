@@ -3,6 +3,10 @@ body {
   margin: 0;
 }
 
+body.static {
+  overflow: hidden;
+}
+
 header {
   display: flex;
   justify-content: center;
@@ -46,7 +50,7 @@ footer p {
   text-decoration: underline;
 }
 
-main {
+.main {
   min-height: 50vh;
   display: flex;
   justify-content: center;
@@ -58,50 +62,120 @@ main {
   margin-right: auto;
 }
 
-main .movie {
+.main .movie {
   width: 30%;
   height: 650px;
   position: relative;
 }
 
-main img {
+.main img {
   width: 100%;
   height: auto;
 }
 
-main .name-add-like {
+.main .name-add-like {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-main .name-add-like h2 {
+.name-add-like h2 {
   width: 80%;
 }
 
-main .name-add-like i {
+.main .name-add-like i {
   color: rgb(204, 6, 6);
   cursor: pointer;
 }
 
-main p {
+.main p {
   text-align: right;
   font-size: 20px;
 }
 
-main button {
+.main button {
   width: 100%;
   border: 0;
   height: 40px;
   cursor: pointer;
 }
 
-main button:hover {
+.main button:hover {
   background-color: rgb(189, 189, 189);
 }
 
-main .comment-btn-div {
+.main .comment-btn-div {
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+/*** comment section start ***/
+
+.commentpop {
+  display: none;
+  background-color: beige;
+  color: black;
+  border: 2px solid red;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  justify-content: center;
+}
+
+.comment-js {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.commentpop.show {
+  display: flex;
+}
+
+.name-closeicon {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+  align-items: center;
+
+  /* margin-bottom: 30px; */
+}
+
+.name-closeicon h2 {
+  font-size: 40px;
+}
+
+.name-closeicon .fa-times {
+  font-size: 20px;
+}
+
+.comment-img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.comment-img img {
+  width: 70%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.summary {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  justify-self: center;
+}
+
+.comment-js ul {
+  list-style-type: none;
+  margin-bottom: 40px;
+  margin-left: 30px;
 }
