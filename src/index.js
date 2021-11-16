@@ -2,7 +2,7 @@ import './style.css';
 import getMovies from './api-controller.js';
 
 const commentSection = document.querySelector('.commentpop');
-const bodyfix = document.querySelector('body')
+const bodyfix = document.querySelector('body');
 const rederMovies = async (genresType) => {
   let movies = await getMovies();
   movies = movies.filter((item) => item.genres.indexOf(genresType) !== -1);
@@ -29,7 +29,6 @@ const rederMovies = async (genresType) => {
   const commentPopup = () => {
     commentButton.forEach((button, index) => {
       button.addEventListener('click', () => {
-
         commentSection.classList.add('show');
         bodyfix.classList.add('static');
 
@@ -47,12 +46,12 @@ const rederMovies = async (genresType) => {
         </ul>
         </div>`;
 
-     const closeComment = document.querySelector('.fa-times');
-      const closebtn = () => {
-        commentSection.classList.remove('show');
-        bodyfix.classList.remove('static');
-      };
-      closeComment.addEventListener('click', closebtn);
+        const closeComment = document.querySelector('.fa-times');
+        const closebtn = () => {
+          commentSection.classList.remove('show');
+          bodyfix.classList.remove('static');
+        };
+        closeComment.addEventListener('click', closebtn);
       });
     });
   };
