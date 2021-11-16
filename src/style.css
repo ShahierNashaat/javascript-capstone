@@ -1,4 +1,32 @@
 body {
-  background-color: beige;
   font-family: 'Roboto Condensed', sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  gap: 100px;
+}
+
+header img {
+  width: 150px;
+  height: auto;
+}
+
+header ul {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  gap: 100px;
+  align-self: center;
+}
+
+header li {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+header li:hover {
+  text-decoration: underline;
 }
