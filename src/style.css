@@ -81,6 +81,7 @@ main .name-add-like h2 {
 
 main .name-add-like i {
   color: rgb(204, 6, 6);
+  cursor: pointer;
 }
 
 main p {

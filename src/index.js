@@ -1,8 +1,8 @@
 import './style.css';
-import apiController from './api-controller.js';
+import getMovies from './api-controller.js';
 
 const rederMovies = async (genresType) => {
-  let movies = await apiController.getMovies();
+  let movies = await getMovies();
   movies = movies.filter((item) => item.genres.indexOf(genresType) !== -1);
   const mainSection = document.querySelector('main');
   mainSection.innerHTML = '';
