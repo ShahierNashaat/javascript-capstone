@@ -1,10 +1,22 @@
 import './style.css';
-import getMovies from './api-controller.js';
+import getMovies, {getlikes} from './api-controller.js';
 import commentPopup from './comment.js';
+
+const getLikesForMovie = (likes, id) => {
+  for(let i = 0; i < likes.length; i += 1) {
+    if(likes[i].item_id === id.toString()) {
+      return likes[i].likes;
+    }
+  }
+  return 0;
+};
 
 const rederMovies = async (genresType) => {
   let movies = await getMovies();
   movies = movies.filter((item) => item.genres.indexOf(genresType) !== -1);
+
+  let likes = await getlikes();
+
   const mainSection = document.querySelector('.main');
   mainSection.innerHTML = '';
   for (let i = 0; i < movies.length; i += 1) {
@@ -16,7 +28,7 @@ const rederMovies = async (genresType) => {
             <i class="far fa-heart fa-2x"></i>
         </div>
         <div>
-            <p>5 likes</p>
+            <p>${getLikesForMovie(likes, movies[i].id)} likes</p>
         </div>
         <div class="comment-btn-div">
             <button>Comments</button>
