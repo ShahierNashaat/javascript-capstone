@@ -10,6 +10,16 @@ const commentPopup = (commentButton, movies) => {
       bodyfix.classList.add('static');
 
       const commentResult = await getComments(movies[index].id);
+
+      let allComment = '';
+      commentResult.forEach((commentResult) => {
+        allComment += `<p>
+          <span class='date'>${commentResult.creation_date}<span>
+          <span class='comment-name'>${commentResult.username}: </span>
+          <span class='comment-detail'>${commentResult.comment} </span>
+          <p>`;
+      });
+
       commentSection.innerHTML = `<div class='comment-js'>
         <div class='name-closeicon'>
         <h2>${movies[index].name}</h2>
@@ -24,11 +34,7 @@ const commentPopup = (commentButton, movies) => {
         </ul>
         <div class='add-comments'>
         <h3>comments(${commentResult.length})</h3>
-        <p>
-        <span class='date'>${commentResult[index].creation_date}<span>
-        <span class='comment-name'>${commentResult[index].username}: </span>
-        <span class='comment-detail'>${commentResult[index].comment} </span>
-        <p>
+        ${allComment}
         </div>
 
         </div>`;
