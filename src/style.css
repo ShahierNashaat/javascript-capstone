@@ -1,5 +1,5 @@
 body {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   margin: 0;
 }
 
@@ -116,7 +116,6 @@ footer p {
   display: none;
   background-color: beige;
   color: black;
-  border: 2px solid red;
   position: fixed;
   top: 0;
   width: 100%;
@@ -151,6 +150,7 @@ footer p {
 
 .name-closeicon .fa-times {
   font-size: 20px;
+  cursor: pointer;
 }
 
 .comment-img {
@@ -178,4 +178,15 @@ footer p {
   list-style-type: none;
   margin-bottom: 40px;
   margin-left: 30px;
+}
+
+.comment-js ul li a {
+  text-decoration: none;
+  color: #0052f5;
+  transition: 0.5s;
+}
+
+.comment-js ul li a:hover {
+  text-decoration: underline;
+  color: #00308f;
 }

@@ -41,7 +41,7 @@ const rederMovies = async (genresType) => {
         <div class='summary'>${movies[index].summary}</div>
         <ul>
         <li>Genre: ${movies[index].genres.join(',')}</li>
-        <li>tvmaze: ${movies[index].url}</li>
+        <li>tvmaze: <a href="${movies[index].url}" target="_blank">details about show</a></li>
         <li>rating: ${movies[index].rating.average}</li>
         </ul>
         </div>`;
