@@ -194,3 +194,22 @@ footer p {
   text-decoration: underline;
   color: #00308f;
 }
+
+.add-comments {
+  margin-bottom: 40px;
+  margin-left: 70px;
+}
+
+.add-comments h3 {
+  font-size: 22px;
+}
+
+.date {
+  font-style: italic;
+}
+
+.comment-name,
+.comment-detail {
+  font-weight: 400;
+  margin-left: 5px;
+}

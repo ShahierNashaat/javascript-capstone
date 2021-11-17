@@ -37,7 +37,6 @@ const rederMovies = async (genresType) => {
   }
 
   const commentButton = document.querySelectorAll('.comment-btn-div button');
-
   commentPopup(commentButton, movies);
 };
 
