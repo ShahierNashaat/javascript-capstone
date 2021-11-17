@@ -4,8 +4,8 @@ const commentSection = document.querySelector('.commentpop');
 const bodyfix = document.querySelector('body');
 
 const getCommentsHtml = (commentResult) => {
-  let commentsHtml = ``;
-  for(let i = 0; i < commentResult.length; i += 1) {
+  let commentsHtml = '';
+  for (let i = 0; i < commentResult.length; i += 1) {
     commentsHtml += `<p>
     <span class='date'>${commentResult[i].creation_date}<span>
     <span class='comment-name'>${commentResult[i].username}: </span>
@@ -13,7 +13,7 @@ const getCommentsHtml = (commentResult) => {
     <p>`;
   }
   return commentsHtml;
-}
+};
 
 const commentPopup = (commentButton, movies) => {
   commentButton.forEach((button, index) => {
@@ -22,8 +22,7 @@ const commentPopup = (commentButton, movies) => {
       bodyfix.classList.add('static');
 
       const commentResult = await getComments(movies[index].id);
-      console.log(commentResult);
-      
+
       commentSection.innerHTML = `<div class='comment-js'>
         <div class='name-closeicon'>
         <h2>${movies[index].name}</h2>

@@ -1,5 +1,5 @@
 import './style.css';
-import getMovies, { getlikes } from './api-controller.js';
+import getMovies, { getlikes, postLike } from './api-controller.js';
 import commentPopup from './comment.js';
 
 const getLikesForMovie = (likes, id) => {
@@ -9,6 +9,16 @@ const getLikesForMovie = (likes, id) => {
     }
   }
   return 0;
+};
+
+const handleLikeButtonClick = () => {
+  document.querySelectorAll('.main .name-add-like i').forEach((item) => {
+    item.addEventListener('click', async () => {
+      await postLike(item.getAttribute('data-movieId'));
+      const likes = await getlikes();
+      item.parentElement.parentElement.querySelector('p').textContent = `${getLikesForMovie(likes, item.getAttribute('data-movieId'))} likes`;
+    });
+  });
 };
 
 const rederMovies = async (genresType) => {
@@ -25,7 +35,7 @@ const rederMovies = async (genresType) => {
         <img src="${movies[i].image.medium}">
         <div class="name-add-like">
             <h2>${movies[i].name}</h2>
-            <i class="far fa-heart fa-2x"></i>
+            <i class="fas fa-heart fa-2x" data-movieId="${movies[i].id}"></i>
         </div>
         <div>
             <p>${getLikesForMovie(likes, movies[i].id)} likes</p>
@@ -35,6 +45,8 @@ const rederMovies = async (genresType) => {
         </div>
         </div>`;
   }
+
+  handleLikeButtonClick();
 
   const commentButton = document.querySelectorAll('.comment-btn-div button');
   commentPopup(commentButton, movies);

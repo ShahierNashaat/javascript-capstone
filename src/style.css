@@ -88,6 +88,10 @@ footer p {
   cursor: pointer;
 }
 
+.main .name-add-like i:hover {
+  color: rgb(133, 4, 4);
+}
+
 .main p {
   text-align: right;
   font-size: 20px;
