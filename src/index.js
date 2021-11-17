@@ -1,10 +1,10 @@
 import './style.css';
-import getMovies, {getlikes} from './api-controller.js';
+import getMovies, { getlikes } from './api-controller.js';
 import commentPopup from './comment.js';
 
 const getLikesForMovie = (likes, id) => {
-  for(let i = 0; i < likes.length; i += 1) {
-    if(likes[i].item_id === id.toString()) {
+  for (let i = 0; i < likes.length; i += 1) {
+    if (likes[i].item_id === id.toString()) {
       return likes[i].likes;
     }
   }
@@ -15,7 +15,7 @@ const rederMovies = async (genresType) => {
   let movies = await getMovies();
   movies = movies.filter((item) => item.genres.indexOf(genresType) !== -1);
 
-  let likes = await getlikes();
+  const likes = await getlikes();
 
   const mainSection = document.querySelector('.main');
   mainSection.innerHTML = '';
