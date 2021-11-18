@@ -18,6 +18,10 @@
 
 [Live Demo Link](https://github.com/ShahierNashaat/javascript-capstone/dist)
 
+## Video Description
+
+[Videos Link](https://www.loom.com/share/4f60fdc9b8134deda2c9b5a94bc9eca6)
+
 
 ## Getting Started
 
