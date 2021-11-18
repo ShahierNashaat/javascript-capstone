@@ -1,3 +1,5 @@
+import { createPlugin } from "stylelint";
+
 const getMovies = () => {
   const movies = [
     {
