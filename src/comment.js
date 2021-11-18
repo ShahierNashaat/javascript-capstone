@@ -16,12 +16,12 @@ const getCommentsHtml = (commentResult) => {
 };
 
 const submitfunction = async (movies, index) => {
-    let form = document.getElementById('comment-form');
-    await postComment(movies[index].id, form.name.value, form.moviecomment.value);
-    const commentResult = await getComments(movies[index].id);
-    document.getElementsByClassName('add-comments')[0].innerHTML = getCommentsHtml(commentResult);
-    form.name.value = '';
-    form.moviecomment.value = '';
+  const form = document.getElementById('comment-form');
+  await postComment(movies[index].id, form.name.value, form.moviecomment.value);
+  const commentResult = await getComments(movies[index].id);
+  document.getElementsByClassName('add-comments')[0].innerHTML = getCommentsHtml(commentResult);
+  form.name.value = '';
+  form.moviecomment.value = '';
 };
 
 const commentPopup = (commentButton, movies) => {
@@ -61,8 +61,8 @@ const commentPopup = (commentButton, movies) => {
     </form>
         </div>`;
 
-        const addComment = document.getElementById('add');
-        addComment.addEventListener('click', (e) => {submitfunction(movies, index)});
+      const addComment = document.getElementById('add');
+      addComment.addEventListener('click', () => { submitfunction(movies, index); });
 
       const closeComment = document.querySelector('.fa-times');
       const closebtn = () => {
