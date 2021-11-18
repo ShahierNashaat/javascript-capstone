@@ -24,6 +24,18 @@ const postLike = (id) => fetch('https://us-central1-involvement-api.cloudfunctio
 })
   .then((response) => response.text());
 
+const postComment = (id, name, comment) => fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/izzKZgflb43lj8vOIg9b/comments', {
+  method: 'POST',
+  body: JSON.stringify({
+    item_id: id,
+    username: name,
+    comment,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+}).then((response) => response.json()).then((json) => console.log(json));
+
 export {
-  getMovies as default, getlikes, getComments, postLike,
+  getMovies as default, getlikes, getComments, postLike, postComment,
 };
