@@ -1,10 +1,11 @@
 import { getComments, postComment } from './api-controller.js';
+import { countComment } from './counter.js';
 
 const commentSection = document.querySelector('.commentpop');
 const bodyfix = document.querySelector('body');
 
 const getCommentsHtml = (commentResult) => {
-  let commentsHtml = `<h3>comments(${commentResult.length})</h3>`;
+  let commentsHtml = `<h3>comments(${countComment(commentResult)})</h3>`;
   for (let i = 0; i < commentResult.length; i += 1) {
     commentsHtml += `<p>
       <span class='date'>${commentResult[i].creation_date}<span>
