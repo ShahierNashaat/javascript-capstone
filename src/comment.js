@@ -4,7 +4,7 @@ const commentSection = document.querySelector('.commentpop');
 const bodyfix = document.querySelector('body');
 
 const getCommentsHtml = (commentResult) => {
-  let commentsHtml = '';
+  let commentsHtml = `<h3>comments(${commentResult.length})</h3>`;
   for (let i = 0; i < commentResult.length; i += 1) {
     commentsHtml += `<p>
       <span class='date'>${commentResult[i].creation_date}<span>
@@ -15,14 +15,13 @@ const getCommentsHtml = (commentResult) => {
   return commentsHtml;
 };
 
-const submitfunction = (movies, index) => {
-  const addComment = document.getElementById('comment-form');
-  addComment.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    await postComment(movies[index].id, e.target.name.value, e.target.moviecomment.value);
+const submitfunction = async (movies, index) => {
+    let form = document.getElementById('comment-form');
+    await postComment(movies[index].id, form.name.value, form.moviecomment.value);
     const commentResult = await getComments(movies[index].id);
-    document.getElementsByClassName('add-comments').appendChild(getCommentsHtml(commentResult));
-  });
+    document.getElementsByClassName('add-comments')[0].innerHTML = getCommentsHtml(commentResult);
+    form.name.value = '';
+    form.moviecomment.value = '';
 };
 
 const commentPopup = (commentButton, movies) => {
@@ -46,7 +45,6 @@ const commentPopup = (commentButton, movies) => {
         <li>rating: ${movies[index].rating.average}</li>
         </ul>
         <div class='add-comments'>
-        <h3>comments(${commentResult.length})</h3>
         ${getCommentsHtml(commentResult)}
         </div>
         <form id="comment-form">
@@ -58,12 +56,13 @@ const commentPopup = (commentButton, movies) => {
         <textarea id="moviecomment" name="moviecomment" rows="4" cols="50" required></textarea>
         </div>
         <div class="button-flex">
-            <button type="submit" id="add">Add comment</button>
+            <button type="button" id="add">Add comment</button>
         </div>
     </form>
         </div>`;
 
-      submitfunction(movies, index);
+        const addComment = document.getElementById('add');
+        addComment.addEventListener('click', (e) => {submitfunction(movies, index)});
 
       const closeComment = document.querySelector('.fa-times');
       const closebtn = () => {
