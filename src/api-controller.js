@@ -1,40 +1,53 @@
-const getMovies = () => fetch('https://api.tvmaze.com/shows')
-  .then((response) => response.json());
+const getMovies = async () => {
+  const response = await fetch('https://api.tvmaze.com/shows');
+  const data = await response.json();
+  return data;
+}
 
-const getlikes = () => fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/izzKZgflb43lj8vOIg9b/likes')
-  .then((response) => response.json());
+const getlikes = async () => {
+  const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/izzKZgflb43lj8vOIg9b/likes');
+  const data = await response.json();
+  return data;
+}
 
-const getComments = (id) => fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/izzKZgflb43lj8vOIg9b/comments?item_id=${id}`)
-  .then((response) => {
-    if (response.ok) {
-      return response.json();
-    }
+const getComments = async (id) => {
+  const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/izzKZgflb43lj8vOIg9b/comments?item_id=${id}`);
+  let data = [];
+  if (response.ok) {
+    data = await response.json();
+  }
+  return data;
+}
 
-    return [];
+const postLike = async (id) => {
+  const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/izzKZgflb43lj8vOIg9b/likes', {
+    method: 'POST',
+    body: JSON.stringify({
+      item_id: id,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
   });
+  const data = await response.text();
+  return data;
+}
 
-const postLike = (id) => fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/izzKZgflb43lj8vOIg9b/likes', {
-  method: 'POST',
-  body: JSON.stringify({
-    item_id: id,
-  }),
-  headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  },
-})
-  .then((response) => response.text());
-
-const postComment = (id, name, comment) => fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/izzKZgflb43lj8vOIg9b/comments', {
-  method: 'POST',
-  body: JSON.stringify({
-    item_id: id,
-    username: name,
-    comment,
-  }),
-  headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  },
-}).then((response) => response.text());
+const postComment = async (id, name, comment) => {
+  const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/izzKZgflb43lj8vOIg9b/comments', {
+    method: 'POST',
+    body: JSON.stringify({
+      item_id: id,
+      username: name,
+      comment,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+  const data = await response.text();
+  return data;
+}
 
 export {
   getMovies as default, getlikes, getComments, postLike, postComment,
