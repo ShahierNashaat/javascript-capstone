@@ -6,7 +6,7 @@
 
  home page                                  |  comment popup
 :------------------------------------------:|:---------------------------------------:
-![screenshot](./images/app_screenshot.png)  |  ![screenshot](./public/comments-popup.PNG)
+![screenshot](./images/app_screenshot.png)  |  ![screenshot](./images/comments-popup.PNG)
 
 
 
