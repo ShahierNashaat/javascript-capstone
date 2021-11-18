@@ -4,7 +4,12 @@
 
 > Project for showing movies give them likes and comments on them.
 
-![screenshot](./images/app_screenshot.png)
+ home page                                  |  comment popup
+:------------------------------------------:|:---------------------------------------:
+![screenshot](./images/app_screenshot.png)  |  ![screenshot](./public/comments-popup.PNG)
+
+
+
 
 ## Built With
 
