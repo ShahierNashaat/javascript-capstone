@@ -1,6 +1,7 @@
 import './style.css';
 import getMovies, { getlikes, postLike } from './api-controller.js';
 import commentPopup from './comment.js';
+import countMovies from './counter.js';
 
 const getLikesForMovie = (likes, id) => {
   for (let i = 0; i < likes.length; i += 1) {
@@ -22,8 +23,8 @@ const handleLikeButtonClick = () => {
 };
 
 const rederMovies = async (genresType) => {
-  let movies = await getMovies();
-  movies = movies.filter((item) => item.genres.indexOf(genresType) !== -1);
+  const allmovies = await getMovies();
+  const movies = allmovies.filter((item) => item.genres.indexOf(genresType) !== -1);
 
   const likes = await getlikes();
 
@@ -46,6 +47,8 @@ const rederMovies = async (genresType) => {
         </div>`;
   }
 
+  document.querySelector('.active').textContent += `(${countMovies(allmovies, genresType)})`;
+
   handleLikeButtonClick();
 
   const commentButton = document.querySelectorAll('.comment-btn-div button');
@@ -58,6 +61,7 @@ const links = document.querySelectorAll('header li');
 
 const resetLinks = () => {
   for (let i = 0; i < links.length; i += 1) {
+    links[i].textContent = links[i].getAttribute('data-geners');
     links[i].classList.remove('active');
   }
 };
