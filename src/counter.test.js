@@ -1,4 +1,4 @@
-import countMovies, {countComment} from './counter.js';
+import countMovies, { countComment } from './counter.js';
 import getMovies from './__mocks__/api-controller.js';
 
 jest.mock('./api-controller');
@@ -18,18 +18,18 @@ describe('Test movies counter', () => {
 describe('Test comments counter', () => {
   test('test counter for comments to be 2', () => {
     const comments = [
-    {
-        "comment": "This is nice!",
-        "creation_date": "2021-01-10",
-        "username": "John"
-    },
-    {
-        "comment": "Great content!",
-        "creation_date": "2021-02-10",
-        "username": "Jane"
-    }
-    
-  ]
+      {
+        comment: 'This is nice!',
+        creation_date: '2021-01-10',
+        username: 'John',
+      },
+      {
+        comment: 'Great content!',
+        creation_date: '2021-02-10',
+        username: 'Jane',
+      },
+
+    ];
     expect(countComment(comments)).toBe(comments.length);
   });
 });
