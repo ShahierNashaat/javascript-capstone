@@ -21,7 +21,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://shahiernashaat.github.io/javascript-capstone/dist)
+[Live Demo Link](https://shahiernashaat.github.io/javascript-capstone/)
 
 ## Video Description
 
